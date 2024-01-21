@@ -10,6 +10,7 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             margin: 20px;
+            position: relative;
         }
 
         h1 {
@@ -61,6 +62,13 @@
             margin-top: 20px;
         }
 
+        #logoutButton {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
         #logout {
             display: none;
             margin-top: 10px;
@@ -110,8 +118,9 @@
     <div id="welcome">
         <h2>Welcome to the Home Page!</h2>
         <p id="welcomeMessage"></p>
-        <button id="logoutButton" onclick="logout()">Log Out</button>
     </div>
+
+    <button id="logoutButton" onclick="logout()">Log Out</button>
 
     <div id="logout">
         <p>Logged out successfully. Redirecting to login page...</p>
@@ -144,20 +153,21 @@
             document.getElementById("loginForm").style.display = "none";
             document.getElementById("message").style.display = "none";
             document.getElementById("welcome").style.display = "block";
-            document.getElementById("logout").style.display = "none";
             document.getElementById("logoutButton").style.display = "block";
+            document.getElementById("logout").style.display = "none";
         }
 
         function logout() {
             document.getElementById("loginForm").style.display = "block";
             document.getElementById("message").style.display = "block";
             document.getElementById("welcome").style.display = "none";
+            document.getElementById("logoutButton").style.display = "none";
             document.getElementById("logout").style.display = "block";
 
             // Simulating a delay before redirecting to the login page
             setTimeout(function () {
                 document.getElementById("logout").innerHTML = "Logged out successfully. Redirecting to login page...";
-                window.location.href = "your_login_page.html"; // Replace with the actual login page URL
+                window.location.href = "index.html"; // Replace with the actual login page URL
             }, 2000); // 2000 milliseconds (2 seconds) delay
         }
     </script>
