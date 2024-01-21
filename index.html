@@ -171,13 +171,17 @@
         <label for="registerDob">Date of Birth:</label>
         <input type="date" id="registerDob" name="registerDob" required>
 
-        <label for="registerGender">Gender:</label>
-        <select id="registerGender" name="registerGender" required>
-            <option value="" disabled selected>Select your gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
+        <label>Gender:</label>
+        <div>
+            <input type="radio" id="genderMale" name="registerGender" value="Male" required>
+            <label for="genderMale">Male</label>
+
+            <input type="radio" id="genderFemale" name="registerGender" value="Female" required>
+            <label for="genderFemale">Female</label>
+
+            <input type="radio" id="genderOther" name="registerGender" value="Other" required>
+            <label for="genderOther">Other</label>
+        </div>
 
         <label for="registerNewsletter">Newsletter Subscription:</label>
         <input type="checkbox" id="registerNewsletter" name="registerNewsletter">
@@ -282,7 +286,7 @@
             var phone = document.getElementById("registerPhone").value;
             var countryCode = document.getElementById("registerCountryCode").value;
             var dob = document.getElementById("registerDob").value;
-            var gender = document.getElementById("registerGender").value;
+            var gender = document.querySelector('input[name="registerGender"]:checked').value;
             var subscribeNewsletter = document.getElementById("registerNewsletter").checked ? "Yes" : "No";
             var agreeTerms = document.getElementById("registerTerms").checked;
             var profilePicture = document.getElementById("registerProfilePicture").value;
