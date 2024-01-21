@@ -113,7 +113,7 @@
                 document.getElementById("message").innerText = "Login successful!";
                 return true; // Allow form submission
             } else {
-                document.getElementById("message").innerText = "Login failed. Please check your credentials.";
+                alert("Invalid login credentials. Please try again.");
                 return false; // Prevent form submission
             }
         }
