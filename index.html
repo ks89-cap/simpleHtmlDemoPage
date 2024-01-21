@@ -10,24 +10,31 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             text-align: center;
-            margin: 20px;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             position: relative;
         }
 
         h1 {
             color: #333;
+            margin-top: 40px;
         }
 
-        form {
+        #registrationPage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        #registrationForm {
             max-width: 400px;
-            margin: 20px auto;
-            padding: 15px;
+            width: 100%;
+            padding: 20px;
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
         }
 
         label {
@@ -92,22 +99,6 @@
             margin-top: 10px;
         }
 
-        #registrationForm {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #registrationLink {
-            color: #333;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
         ul {
             list-style-type: none;
             margin: 0;
@@ -138,91 +129,76 @@
 
     <h1>Welcome to E-commerce Registration</h1>
 
-    <!-- Login Form -->
-    <form id="loginForm" onsubmit="return validateLogin()">
-        <label for="loginUsername">Username:</label>
-        <input type="text" id="loginUsername" name="loginUsername" required>
+    <div id="registrationPage">
+        <!-- Registration Form -->
+        <form id="registrationForm" onsubmit="return registerUser()">
+            <label for="registerFullName">Full Name:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="registerFirstName" name="registerFirstName" placeholder="First Name" required>
+                <input type="text" id="registerLastName" name="registerLastName" placeholder="Last Name" required>
+            </div>
 
-        <label for="loginPassword">Password:</label>
-        <input type="password" id="loginPassword" name="loginPassword" required>
+            <label for="registerEmail">Email Address:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="email" id="registerEmail" name="registerEmail" placeholder="Email" required>
+                <input type="email" id="registerEmailConfirm" name="registerEmailConfirm" placeholder="Confirm Email" required>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <label for="registerPassword">Password:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="password" id="registerPassword" name="registerPassword" placeholder="Password" required>
+                <input type="password" id="registerPasswordConfirm" name="registerPasswordConfirm" placeholder="Confirm Password" required>
+            </div>
 
-    <!-- Registration Form -->
-    <form id="registrationForm" onsubmit="return registerUser()">
-        <label for="registerFullName">Full Name:</label>
-        <div style="display: flex; gap: 10px;">
-            <input type="text" id="registerFirstName" name="registerFirstName" placeholder="First Name" required>
-            <input type="text" id="registerLastName" name="registerLastName" placeholder="Last Name" required>
-        </div>
+            <label for="registerUsername">Username:</label>
+            <input type="text" id="registerUsername" name="registerUsername" required>
 
-        <label for="registerEmail">Email Address:</label>
-        <div style="display: flex; gap: 10px;">
-            <input type="email" id="registerEmail" name="registerEmail" placeholder="Email" required>
-            <input type="email" id="registerEmailConfirm" name="registerEmailConfirm" placeholder="Confirm Email" required>
-        </div>
+            <label for="registerAddress">Address:</label>
+            <textarea id="registerAddress" name="registerAddress" rows="3" required></textarea>
 
-        <label for="registerPassword">Password:</label>
-        <div style="display: flex; gap: 10px;">
-            <input type="password" id="registerPassword" name="registerPassword" placeholder="Password" required>
-            <input type="password" id="registerPasswordConfirm" name="registerPasswordConfirm" placeholder="Confirm Password" required>
-        </div>
+            <label for="registerPhone">Phone Number:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="tel" id="registerPhone" name="registerPhone" placeholder="Phone Number" required>
+                <select id="registerCountryCode" name="registerCountryCode" required>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <!-- Add more country codes as needed -->
+                </select>
+            </div>
 
-        <label for="registerUsername">Username:</label>
-        <input type="text" id="registerUsername" name="registerUsername" required>
+            <label for="registerDob">Date of Birth:</label>
+            <input type="date" id="registerDob" name="registerDob" required>
 
-        <label for="registerAddress">Address:</label>
-        <textarea id="registerAddress" name="registerAddress" rows="3" required></textarea>
+            <label>Gender:</label>
+            <div>
+                <input type="radio" id="genderMale" name="registerGender" value="Male" required>
+                <label for="genderMale">Male</label>
 
-        <label for="registerPhone">Phone Number:</label>
-        <div style="display: flex; gap: 10px;">
-            <input type="tel" id="registerPhone" name="registerPhone" placeholder="Phone Number" required>
-            <select id="registerCountryCode" name="registerCountryCode" required>
-                <option value="+1">+1 (USA)</option>
-                <option value="+44">+44 (UK)</option>
-                <!-- Add more country codes as needed -->
-            </select>
-        </div>
+                <input type="radio" id="genderFemale" name="registerGender" value="Female" required>
+                <label for="genderFemale">Female</label>
 
-        <label for="registerDob">Date of Birth:</label>
-        <input type="date" id="registerDob" name="registerDob" required>
+                <input type="radio" id="genderOther" name="registerGender" value="Other" required>
+                <label for="genderOther">Other</label>
+            </div>
 
-        <label>Gender:</label>
-        <div>
-            <input type="radio" id="genderMale" name="registerGender" value="Male" required>
-            <label for="genderMale">Male</label>
+            <label for="registerNewsletter">Newsletter Subscription:</label>
+            <input type="checkbox" id="registerNewsletter" name="registerNewsletter">
 
-            <input type="radio" id="genderFemale" name="registerGender" value="Female" required>
-            <label for="genderFemale">Female</label>
+            <label for="registerTerms">Terms and Conditions:</label>
+            <input type="checkbox" id="registerTerms" name="registerTerms" required>
 
-            <input type="radio" id="genderOther" name="registerGender" value="Other" required>
-            <label for="genderOther">Other</label>
-        </div>
+            <label for="registerProfilePicture">Profile Picture:</label>
+            <input type="file" id="registerProfilePicture" name="registerProfilePicture">
 
-        <label for="registerNewsletter">Newsletter Subscription:</label>
-        <input type="checkbox" id="registerNewsletter" name="registerNewsletter">
-
-        <label for="registerTerms">Terms and Conditions:</label>
-        <input type="checkbox" id="registerTerms" name="registerTerms" required>
-
-        <label for="registerProfilePicture">Profile Picture:</label>
-        <input type="file" id="registerProfilePicture" name="registerProfilePicture">
-
-        <button type="submit">Register</button>
-    </form>
+            <button type="submit">Register</button>
+        </form>
+    </div>
 
     <div id="message"></div>
 
     <div id="welcome">
         <h2>Welcome to the E-commerce Site!</h2>
         <p id="welcomeMessage"></p>
-    </div>
-
-    <button id="logoutButton" onclick="logout()">Log Out</button>
-
-    <div id="logout">
-        <p>Logged out successfully. Redirecting to index page...</p>
     </div>
 
     <!-- Navigation Links -->
