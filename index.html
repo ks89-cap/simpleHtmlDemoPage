@@ -24,6 +24,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
         }
 
         label {
@@ -74,6 +75,21 @@
             margin-top: 10px;
         }
 
+        #registrationForm {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #registrationLink {
+            color: #333;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         ul {
             list-style-type: none;
             margin: 0;
@@ -103,14 +119,26 @@
 
     <h1>Welcome to Selenium Test Page</h1>
 
+    <!-- Login Form -->
     <form id="loginForm" onsubmit="return validateLogin()">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="loginUsername" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword" required>
 
         <button type="submit">Login</button>
+    </form>
+
+    <!-- Registration Form -->
+    <form id="registrationForm" onsubmit="return registerUser()">
+        <label for="registerUsername">Username:</label>
+        <input type="text" id="registerUsername" name="registerUsername" required>
+
+        <label for="registerPassword">Password:</label>
+        <input type="password" id="registerPassword" name="registerPassword" required>
+
+        <button type="submit">Register</button>
     </form>
 
     <div id="message"></div>
@@ -126,16 +154,17 @@
         <p>Logged out successfully. Redirecting to index page...</p>
     </div>
 
+    <!-- Navigation Links -->
     <ul>
+        <li><a href="#login" id="loginLink" onclick="showLoginForm()">Login</a></li>
+        <li><a href="#registration" id="registrationLink" onclick="showRegistrationForm()">Register</a></li>
         <li><a href="#home" id="homeLink" onclick="showHomePage()">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
     </ul>
 
     <script>
         function validateLogin() {
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
+            var username = document.getElementById("loginUsername").value;
+            var password = document.getElementById("loginPassword").value;
 
             // Simulating login validation
             if (username === "testuser" && password === "testpassword") {
@@ -149,8 +178,27 @@
             }
         }
 
+        function showLoginForm() {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registrationForm").style.display = "none";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("logoutButton").style.display = "none";
+            document.getElementById("logout").style.display = "none";
+        }
+
+        function showRegistrationForm() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registrationForm").style.display = "block";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("logoutButton").style.display = "none";
+            document.getElementById("logout").style.display = "none";
+        }
+
         function showHomePage() {
             document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registrationForm").style.display = "none";
             document.getElementById("message").style.display = "none";
             document.getElementById("welcome").style.display = "block";
             document.getElementById("logoutButton").style.display = "block";
@@ -159,6 +207,7 @@
 
         function logout() {
             document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registrationForm").style.display = "none";
             document.getElementById("message").style.display = "block";
             document.getElementById("welcome").style.display = "none";
             document.getElementById("logoutButton").style.display = "none";
@@ -169,6 +218,16 @@
                 document.getElementById("logout").innerHTML = "Logged out successfully. Redirecting to index page...";
                 window.location.href = "index.html"; // Redirect to index page
             }, 2000); // 2000 milliseconds (2 seconds) delay
+        }
+
+        function registerUser() {
+            var username = document.getElementById("registerUsername").value;
+            var password = document.getElementById("registerPassword").value;
+
+            // Simulating user registration (you can add more validation/logic here)
+            alert("User registered successfully!");
+            showLoginForm();
+            return false; // Prevent form submission
         }
     </script>
 
