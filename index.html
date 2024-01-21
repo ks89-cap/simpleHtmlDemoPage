@@ -85,7 +85,7 @@
 
     <h1>Welcome to Selenium Test Page</h1>
 
-    <form id="loginForm">
+    <form id="loginForm" onsubmit="return validateLogin()">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
 
@@ -104,18 +104,19 @@
     </ul>
 
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+        function validateLogin() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-            
-            // Simulating login logic
+
+            // Simulating login validation
             if (username === "testuser" && password === "testpassword") {
                 document.getElementById("message").innerText = "Login successful!";
+                return true; // Allow form submission
             } else {
                 document.getElementById("message").innerText = "Login failed. Please check your credentials.";
+                return false; // Prevent form submission
             }
-        });
+        }
     </script>
 
 </body>
