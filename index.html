@@ -123,7 +123,7 @@
     <button id="logoutButton" onclick="logout()">Log Out</button>
 
     <div id="logout">
-        <p>Logged out successfully. Redirecting to login page...</p>
+        <p>Logged out successfully. Redirecting to index page...</p>
     </div>
 
     <ul>
@@ -164,10 +164,10 @@
             document.getElementById("logoutButton").style.display = "none";
             document.getElementById("logout").style.display = "block";
 
-            // Simulating a delay before redirecting to the login page
+            // Simulating a delay before redirecting to the index page
             setTimeout(function () {
-                document.getElementById("logout").innerHTML = "Logged out successfully. Redirecting to login page...";
-                window.location.href = "index.html"; // Replace with the actual login page URL
+                document.getElementById("logout").innerHTML = "Logged out successfully. Redirecting to index page...";
+                window.location.href = "index.html"; // Redirect to index page
             }, 2000); // 2000 milliseconds (2 seconds) delay
         }
     </script>
