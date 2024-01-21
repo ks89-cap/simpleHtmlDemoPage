@@ -138,6 +138,12 @@
         <label for="registerPassword">Password:</label>
         <input type="password" id="registerPassword" name="registerPassword" required>
 
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" name="registerEmail" required>
+
+        <label for="registerFullName">Full Name:</label>
+        <input type="text" id="registerFullName" name="registerFullName" required>
+
         <button type="submit">Register</button>
     </form>
 
@@ -223,9 +229,11 @@
         function registerUser() {
             var username = document.getElementById("registerUsername").value;
             var password = document.getElementById("registerPassword").value;
+            var email = document.getElementById("registerEmail").value;
+            var fullName = document.getElementById("registerFullName").value;
 
             // Simulating user registration (you can add more validation/logic here)
-            alert("User registered successfully!");
+            alert("User registered successfully!\n\nUsername: " + username + "\nEmail: " + email + "\nFull Name: " + fullName);
             showLoginForm();
             return false; // Prevent form submission
         }
