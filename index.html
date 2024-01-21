@@ -56,6 +56,11 @@
             margin-top: 20px;
         }
 
+        #welcome {
+            display: none;
+            margin-top: 20px;
+        }
+
         ul {
             list-style-type: none;
             margin: 0;
@@ -97,8 +102,13 @@
 
     <div id="message"></div>
 
+    <div id="welcome">
+        <h2>Welcome to the Home Page!</h2>
+        <p id="welcomeMessage"></p>
+    </div>
+
     <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" id="homeLink" onclick="showHomePage()">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -111,11 +121,19 @@
             // Simulating login validation
             if (username === "testuser" && password === "testpassword") {
                 document.getElementById("message").innerText = "Login successful!";
-                return true; // Allow form submission
+                document.getElementById("welcomeMessage").innerText = "Hello, " + username + "!";
+                showHomePage();
+                return false; // Prevent form submission
             } else {
                 alert("Invalid login credentials. Please try again.");
                 return false; // Prevent form submission
             }
+        }
+
+        function showHomePage() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("message").style.display = "none";
+            document.getElementById("welcome").style.display = "block";
         }
     </script>
 
